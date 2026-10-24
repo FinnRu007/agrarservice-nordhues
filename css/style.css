@@ -175,6 +175,19 @@ p { margin: 0 0 1em; }
   transform: rotate(-45deg);
 }
 
+/* ---------- Über uns mit Foto ---------- */
+.ueber-raster {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem 2.5rem;
+  align-items: start;
+}
+@media (min-width: 52rem) {
+  .ueber-raster { grid-template-columns: 1fr 408px; }
+}
+.foto-hof { margin: 0; max-width: 408px; }
+.foto-hof img { width: 100%; border: 1px solid var(--linie); }
+
 /* ---------- Kontakt ---------- */
 .kontakt-raster {
   display: grid;
