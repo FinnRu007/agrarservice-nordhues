@@ -1,0 +1,250 @@
+/* Agrarservice Nordhues – schlichte, gut lesbare Seite ohne Schnickschnack */
+
+:root {
+  --gruen: #2e5a1c;
+  --gruen-dunkel: #1f3e12;
+  --gruen-hell: #e7efdf;
+  --papier: #f7f4ec;
+  --weiss: #ffffff;
+  --text: #222222;
+  --text-leise: #545454;
+  --linie: #d6d0bf;
+  --fokus: #b36b00;
+}
+
+* { box-sizing: border-box; }
+
+html { font-size: 100%; scroll-behavior: auto; }
+
+body {
+  margin: 0;
+  background: var(--papier);
+  color: var(--text);
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  font-size: 1.125rem;   /* 18 px */
+  line-height: 1.6;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--gruen-dunkel); }
+a:hover { color: #000; }
+
+a:focus-visible, .knopf:focus-visible {
+  outline: 3px solid var(--fokus);
+  outline-offset: 2px;
+}
+
+h1, h2, h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--gruen-dunkel);
+  line-height: 1.25;
+  margin: 0 0 .6em;
+}
+h1 { font-size: 2rem; }
+h2 { font-size: 1.65rem; }
+h3 { font-size: 1.25rem; }
+
+p { margin: 0 0 1em; }
+
+.rahmen {
+  max-width: 66rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ---------- Kopf ---------- */
+.kopf {
+  background: var(--weiss);
+  border-bottom: 4px solid var(--gruen);
+}
+.kopf-innen {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.logo { display: block; width: 340px; max-width: 100%; }
+.logo img { width: 100%; border: 1px solid var(--linie); }
+
+.kopf-telefon { text-align: left; }
+.kopf-telefon .klein { display: block; color: var(--text-leise); font-size: 1rem; }
+.kopf-telefon .nummer {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--gruen-dunkel);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.menue { background: var(--gruen); }
+.menue ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0 1rem;
+  max-width: 66rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.menue a {
+  display: block;
+  padding: .8rem 1.1rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.menue a:hover { background: var(--gruen-dunkel); color: #fff; }
+.menue a:focus-visible { outline-color: #fff; outline-offset: -4px; }
+
+/* ---------- Abschnitte ---------- */
+.abschnitt { padding: 2.5rem 0; }
+.abschnitt + .abschnitt { border-top: 1px solid var(--linie); }
+.abschnitt.hell { background: var(--weiss); }
+.abschnitt-einleitung { max-width: 44rem; color: var(--text-leise); }
+
+.start { padding: 2.5rem 0 2rem; }
+.start p { max-width: 44rem; }
+
+/* ---------- Knöpfe ---------- */
+.knopf {
+  display: inline-block;
+  padding: .8rem 1.4rem;
+  background: var(--gruen);
+  color: #fff;
+  border: 2px solid var(--gruen);
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  line-height: 1.3;
+}
+.knopf:hover { background: var(--gruen-dunkel); border-color: var(--gruen-dunkel); color: #fff; }
+.knopf.hohl { background: var(--weiss); color: var(--gruen-dunkel); }
+.knopf.hohl:hover { background: var(--gruen-hell); color: var(--gruen-dunkel); }
+.knopf-reihe { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1rem; }
+
+/* ---------- Karten ---------- */
+.karten {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+@media (min-width: 40rem) {
+  .karten { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 66rem) {
+  .karten.vier { grid-template-columns: repeat(4, 1fr); }
+}
+.karte {
+  background: var(--weiss);
+  border: 1px solid var(--linie);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.karte img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.karte-text { padding: 1rem 1.1rem 1.2rem; display: flex; flex-direction: column; flex: 1; }
+.karte-text p { color: var(--text-leise); }
+.karte-text .knopf { margin-top: auto; text-align: center; }
+.bildhinweis { font-size: .9rem; color: var(--text-leise); margin: .6rem 0 0; }
+
+.karte.ohne-bild .karte-text { padding: 1.4rem 1.4rem 1.6rem; }
+
+/* ---------- Listen ---------- */
+.haken { list-style: none; margin: 0 0 1.2rem; padding: 0; }
+.haken li {
+  position: relative;
+  padding: .35rem 0 .35rem 1.8rem;
+}
+.haken li::before {
+  content: "";
+  position: absolute;
+  left: .2rem;
+  top: .85rem;
+  width: .55rem;
+  height: .3rem;
+  border-left: 3px solid var(--gruen);
+  border-bottom: 3px solid var(--gruen);
+  transform: rotate(-45deg);
+}
+
+/* ---------- Kontakt ---------- */
+.kontakt-raster {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+.kontakt-kasten {
+  background: var(--papier);
+  border: 1px solid var(--linie);
+  border-radius: 4px;
+  padding: 1.1rem 1.3rem;
+}
+.kontakt-kasten h3 { margin-bottom: .4rem; }
+.kontakt-kasten p { margin-bottom: .6rem; }
+.gross-nummer {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.warnung {
+  background: #fbf3dc;
+  border-left: 6px solid #b9871a;
+  padding: 1rem 1.3rem;
+  margin-top: 1.5rem;
+}
+.warnung h3 { margin-bottom: .3rem; }
+.warnung p:last-child { margin-bottom: 0; }
+
+/* ---------- Fuß ---------- */
+.fuss {
+  background: var(--gruen-dunkel);
+  color: #e8efe3;
+  padding: 1.5rem 0;
+  font-size: 1rem;
+}
+.fuss a { color: #fff; }
+.fuss-innen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 2rem;
+  justify-content: space-between;
+}
+.fuss ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.5rem; }
+
+/* ---------- Rechtstexte ---------- */
+.text-seite { padding: 2rem 0 3rem; }
+.text-seite .rahmen { max-width: 46rem; }
+.text-seite h2 { margin-top: 1.8em; font-size: 1.35rem; }
+.text-seite h3 { margin-top: 1.2em; font-size: 1.1rem; }
+.zurueck { display: inline-block; margin-bottom: 1rem; }
+mark { background: #ffe58a; padding: 0 .25em; }
+
+/* ---------- Handy ---------- */
+@media (max-width: 40rem) {
+  h1 { font-size: 1.65rem; }
+  h2 { font-size: 1.45rem; }
+  .logo { width: 100%; }
+  .kopf-telefon .nummer { font-size: 1.7rem; }
+  .menue ul { padding: 0; }
+  .menue li { flex: 1 1 50%; }
+  .menue a { text-align: center; padding: .75rem .5rem; border-bottom: 1px solid rgba(255,255,255,.2); }
+  .knopf-reihe .knopf { width: 100%; text-align: center; }
+  .abschnitt { padding: 2rem 0; }
+}
+
+@media print {
+  .menue, .knopf-reihe { display: none; }
+  body { background: #fff; }
+}
